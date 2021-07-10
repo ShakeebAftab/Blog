@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 0,
         zIndex: 1,
         [theme.breakpoints.down('sm')]: {
-            minHeight: '30vh'
+            minHeight: '40vh'
         }
     },
     overlay: {

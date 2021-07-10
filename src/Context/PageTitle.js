@@ -9,22 +9,13 @@ const PageTitleProvider = ({ children, location }) => {
     const [title, setTitle] = useState('')
 
     const getTitle = (name) => {
-        switch (name) {
-            case '/':
-                return 'Home';
-            case '/techweekly':
-                return 'Tech Weekly';
-            case '/programmingrush':
-                return 'Programming Rush';
-            case '/hardwareflu':
-                return 'Hardware Flu';
-            case '/monthlycrackhead':
-                return 'Monthly Crackhead';
-            case '/creators':
-                return 'Creators';
-            default:
-                return '404';
-        }
+        if (name === '/') return 'Home'
+        if (name.includes('techweekly', 1)) return 'Tech Weekly'
+        if (name.includes('programmingrush', 1)) return 'Programming Rush'
+        if (name.includes('hardwareflu', 1)) return 'Hardware Flu'
+        if (name.includes('monthlycrackhead', 1)) return 'Monthly Crackhead'
+        if (name === '/creators') return 'Creators'
+        return '404';
     }
 
     useEffect(() => {

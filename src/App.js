@@ -8,14 +8,11 @@ import { PageTitleContext } from './Context/PageTitle'
 import Home from './Components/Screens/Home'
 import Creators from './Components/Screens/Creators'
 
-// Tech Screen Imports
-import TechWeekly from './Components/Screens/Tech/TechWeekly'
-import ProgrammingRush from './Components/Screens/Tech/ProgrammingRush'
-import HardwareFlu from './Components/Screens/Tech/HardwareFlu'
-import MonthlyCrackhead from './Components/Screens/Tech/MonthlyCrackhead'
-
 // Component Imports
 import Header from './Components/UI/Header/Header'
+
+// Post Screen Import
+import Post from './Components/Screens/Post'
 
 const App = () => {
 
@@ -26,14 +23,8 @@ const App = () => {
       <Header title={title} />
         <Switch>
             <Route path='/' exact component={Home} />
-            <Route path='/techweekly' exact component={TechWeekly} />
-            <Route path='/programmingrush' exact component={ProgrammingRush} />
-            <Route path='/hardwareflu' exact component={HardwareFlu} />
-            <Route path='/monthlycrackhead' exact component={MonthlyCrackhead} />
-            <Route path='/techweekly/:id' exact component={TechWeekly} />
-            <Route path='/programmingrush/:id' exact component={ProgrammingRush} />
-            <Route path='/hardwareflu/:id' exact component={HardwareFlu} />
-            <Route path='/monthlycrackhead/:id' exact component={MonthlyCrackhead} />
+            <Route path='/:category' exact component={Home} />
+            <Route path='/:category/:id' exact component={Post} />
             <Route path='/creators' exact component={Creators} />
             <Route path='/' render={() => <div>404</div>} />
         </Switch>
