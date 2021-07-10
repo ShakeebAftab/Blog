@@ -6,6 +6,7 @@ import { PageTitleContext } from './Context/PageTitle'
 
 // Screen Imports
 import Home from './Components/Screens/Home'
+import Category from './Components/Screens/Category'
 import Creators from './Components/Screens/Creators'
 
 // Component Imports
@@ -23,9 +24,9 @@ const App = () => {
       <Header title={title} />
         <Switch>
             <Route path='/' exact component={Home} />
-            <Route path='/:category' exact component={Home} />
-            <Route path='/:category/:id' exact component={Post} />
             <Route path='/creators' exact component={Creators} />
+            <Route path='/:category' exact component={Category} />
+            <Route path='/:category/:id' exact component={Post} />
             <Route path='/' render={() => <div>404</div>} />
         </Switch>
     </div>

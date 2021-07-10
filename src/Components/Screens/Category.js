@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
-import { makeStyles, Grid, Box } from '@material-ui/core'
+import { makeStyles, Grid } from '@material-ui/core'
 
 // Component Imports
 import Featured from '../UI/Featured/Featured'
-import ContentSection from '../UI/ContentSection/ContentSection'
 
 // Test Data
 import { homeFeaturedPosts, techweeklyFeaturedPosts } from '../../TestData/data'
@@ -17,13 +16,9 @@ const useStyles = makeStyles(theme => ({
             minHeight: '64px'
         },
     },
-    box: {
-        minWidth: '100%',
-        backgroundColor: '#0f0f0f',
-    }
 }))
 
-const Home = ({ history, match }) => {
+const Category = ({ history, match }) => {
 
     const classes = useStyles();
 
@@ -52,18 +47,14 @@ const Home = ({ history, match }) => {
     if(posts.length <= 0) return <div>ERROR!!</div>
 
     return (
-        <Box overflow='hidden' className={classes.box}>
-            <Grid container direction='column' spacing={2}>
-                <Grid item className={classes.toolbar} />
-                <Grid item>
-                    <Featured posts={posts} history={history} />
-                </Grid>
-                <Grid item>
-                    <ContentSection heading='Tech Junky' />
-                </Grid>
+        <Grid container direction='column'>
+            <Grid item className={classes.toolbar} />
+            <Grid item>
+                <Featured posts={posts} history={history} />
             </Grid>
-        </Box>
+        </Grid>
     )
 }
 
-export default Home
+export default Category
+

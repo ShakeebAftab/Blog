@@ -56,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
@@ -97,25 +96,38 @@ const Header = ({ title, history }) => {
       text: 'Tech Weekly',
       icon: <LiveTvRoundedIcon />,
       activeIcon: <LiveTvRoundedIcon color='primary' />,
-      onClick: () => history.push('/techweekly')
+      onClick: () => {
+        history.push('/techweekly')
+        setOpen(false)
+      }
     },
     {
       text: 'Programming Rush',
       icon: <AccountTreeRoundedIcon />,
       activeIcon: <AccountTreeRoundedIcon color='primary' />,
-      onClick: () => history.push('/programmingrush')
+      onClick: () => {
+        history.push('/programmingrush')
+        setOpen(false)
+      
+      }
     },
     {
       text: 'Hardware Flu',
       icon: <BuildRoundedIcon />,
       activeIcon: <BuildRoundedIcon color='primary' />,
-      onClick: () => history.push('/hardwareflu')
+      onClick: () => {
+        history.push('/hardwareflu')
+        setOpen(false)
+      }
     },
     {
       text: 'Monthly Crackhead',
       icon: <EmojiPeopleRoundedIcon />,
       activeIcon: <EmojiPeopleRoundedIcon color='primary' />,
-      onClick: () => history.push('/monthlycrackhead')
+      onClick: () => {
+        history.push('/monthlycrackhead')
+        setOpen(false)
+      }
     },
   ]
 
@@ -159,7 +171,10 @@ const Header = ({ title, history }) => {
         </div>
         <Divider />
         <List>
-            <ListItem button key={'Home'} onClick={() => history.push('/')}>
+            <ListItem button key={'Home'} onClick={() => {
+              history.push('/')
+              setOpen(false)
+            }}>
               {title === 'Home' ? <ListItemIcon><HomeRoundedIcon color='primary' /></ListItemIcon> : <ListItemIcon><HomeRoundedIcon/></ListItemIcon> }
               <ListItemText primary={'Home'} />
             </ListItem>
@@ -175,7 +190,10 @@ const Header = ({ title, history }) => {
         </List>
         <Divider />
         <List>
-            <ListItem button key={'Creators'} onClick={() => history.push('/creators')}>
+            <ListItem button key={'Creators'} onClick={() => {
+              history.push('/creators')
+              setOpen(false)
+            }}>
               {title === 'Creators' ? <ListItemIcon><ChildCareRoundedIcon color='primary' /></ListItemIcon> : <ListItemIcon><ChildCareRoundedIcon/></ListItemIcon> }
               <ListItemText primary={'Creators'} />
             </ListItem>
