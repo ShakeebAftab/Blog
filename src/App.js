@@ -30,6 +30,10 @@ const App = () => {
             <Route path='/programmingrush' exact component={ProgrammingRush} />
             <Route path='/hardwareflu' exact component={HardwareFlu} />
             <Route path='/monthlycrackhead' exact component={MonthlyCrackhead} />
+            <Route path='/techweekly/:id' exact component={TechWeekly} />
+            <Route path='/programmingrush/:id' exact component={ProgrammingRush} />
+            <Route path='/hardwareflu/:id' exact component={HardwareFlu} />
+            <Route path='/monthlycrackhead/:id' exact component={MonthlyCrackhead} />
             <Route path='/creators' exact component={Creators} />
             <Route path='/' render={() => <div>404</div>} />
         </Switch>
