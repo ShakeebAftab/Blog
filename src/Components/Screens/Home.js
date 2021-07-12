@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
     },
     box: {
         minWidth: '100%',
-        backgroundColor: '#0f0f0f',
     }
 }))
 

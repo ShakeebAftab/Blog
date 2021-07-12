@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor: theme.palette.background.paper
   },
   drawerHeader: {
     display: 'flex',
@@ -75,6 +76,12 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  listItem: {
+    color: 'grey'
+  },
+  active: {
+    color: 'white',
+  }
 }));
 
 const Header = ({ title, history }) => {
@@ -94,8 +101,8 @@ const Header = ({ title, history }) => {
   const TechOptions = [
     {
       text: 'Tech Weekly',
-      icon: <LiveTvRoundedIcon />,
-      activeIcon: <LiveTvRoundedIcon color='primary' />,
+      icon: <LiveTvRoundedIcon className={classes.listItem} />,
+      activeIcon: <LiveTvRoundedIcon color='secondary' />,
       onClick: () => {
         history.push('/techweekly')
         setOpen(false)
@@ -103,18 +110,17 @@ const Header = ({ title, history }) => {
     },
     {
       text: 'Programming Rush',
-      icon: <AccountTreeRoundedIcon />,
-      activeIcon: <AccountTreeRoundedIcon color='primary' />,
+      icon: <AccountTreeRoundedIcon className={classes.listItem} />,
+      activeIcon: <AccountTreeRoundedIcon color='secondary' />,
       onClick: () => {
         history.push('/programmingrush')
         setOpen(false)
-      
       }
     },
     {
       text: 'Hardware Flu',
-      icon: <BuildRoundedIcon />,
-      activeIcon: <BuildRoundedIcon color='primary' />,
+      icon: <BuildRoundedIcon className={classes.listItem} />,
+      activeIcon: <BuildRoundedIcon color='secondary' />,
       onClick: () => {
         history.push('/hardwareflu')
         setOpen(false)
@@ -122,8 +128,8 @@ const Header = ({ title, history }) => {
     },
     {
       text: 'Monthly Crackhead',
-      icon: <EmojiPeopleRoundedIcon />,
-      activeIcon: <EmojiPeopleRoundedIcon color='primary' />,
+      icon: <EmojiPeopleRoundedIcon className={classes.listItem} />,
+      activeIcon: <EmojiPeopleRoundedIcon color='secondary' />,
       onClick: () => {
         history.push('/monthlycrackhead')
         setOpen(false)
@@ -149,13 +155,13 @@ const Header = ({ title, history }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            {title}
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        className={classes.drawer}
+            <Typography variant="h6" noWrap>
+              {title}
+            </Typography>
+      </Toolbar>
+    </AppBar>
+    <Drawer
+      className={classes.drawer}
         style={{width: (open ? 240 : 0)}}
         variant="persistent"
         anchor="left"
@@ -166,36 +172,36 @@ const Header = ({ title, history }) => {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? <ChevronLeftIcon color='secondary' /> : <ChevronRightIcon color='secondary' />}
           </IconButton>
         </div>
         <Divider />
         <List>
-            <ListItem button key={'Home'} onClick={() => {
+            <ListItem button key={'Home'} className={classes.listItem} onClick={() => {
               history.push('/')
               setOpen(false)
             }}>
-              {title === 'Home' ? <ListItemIcon><HomeRoundedIcon color='primary' /></ListItemIcon> : <ListItemIcon><HomeRoundedIcon/></ListItemIcon> }
-              <ListItemText primary={'Home'} />
+              {title === 'Home' ? <ListItemIcon><HomeRoundedIcon color='secondary' /></ListItemIcon> : <ListItemIcon><HomeRoundedIcon className={classes.listItem} /></ListItemIcon> }
+              {title === 'Home' ? <ListItemText primary={'Home'} className={classes.active} /> : <ListItemText primary={'Home'} />}
             </ListItem>
         </List>
         <Divider />
-        <List>
+        <List className={classes.listItem}>
           {TechOptions.map(({text, icon, activeIcon, onClick}, index) => (
             <ListItem button key={text} onClick={onClick}>
               <ListItemIcon>{text === title ? activeIcon : icon}</ListItemIcon>
-              <ListItemText primary={text} />
+              {text === title ? <ListItemText primary={text} className={classes.active} /> : <ListItemText primary={text} />}
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-            <ListItem button key={'Creators'} onClick={() => {
+            <ListItem button key={'Creators'} className={classes.listItem} onClick={() => {
               history.push('/creators')
               setOpen(false)
             }}>
-              {title === 'Creators' ? <ListItemIcon><ChildCareRoundedIcon color='primary' /></ListItemIcon> : <ListItemIcon><ChildCareRoundedIcon/></ListItemIcon> }
-              <ListItemText primary={'Creators'} />
+              {title === 'Creators' ? <ListItemIcon><ChildCareRoundedIcon color='secondary' /></ListItemIcon> : <ListItemIcon><ChildCareRoundedIcon className={classes.listItem} /></ListItemIcon> }
+              {title === 'Creators' ? <ListItemText primary={'Creators'} className={classes.active} /> : <ListItemText primary={'Creators'} />}
             </ListItem>
         </List>
       </Drawer>

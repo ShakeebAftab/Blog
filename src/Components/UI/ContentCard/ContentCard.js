@@ -21,29 +21,29 @@ const useStyles = makeStyles({
         paddingTop: '56.25%', // 16:9
     },
     avatar: {
-        backgroundColor: red[500],
+        backgroundColor: red[400],
     },
     subHeading: {
-        color: 'white'
+        color: '#ababab'
     }
 });
 
-export default function MediaCard({ post }) {
+const ContentCard = ({ post }) => {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea onClick={() => console.log('Clicked')}>
         <CardMedia
             className={classes.media}
             image={post.pic}
             title={post.title}
         />
         <CardContent>
-          <Typography gutterBottom variant="body1" component="h2">
+          <Typography gutterBottom variant="h6" component="h2" noWrap>
             {post.title}
           </Typography>
-          <Typography variant="body2" component="p">
+          <Typography variant="body2" component="p" className={classes.subHeading}>
               This is a  test summary so the card styling can be easily and effectively...
           </Typography>
         </CardContent>
@@ -60,3 +60,5 @@ export default function MediaCard({ post }) {
     </Card>
   );
 }
+
+export default ContentCard
