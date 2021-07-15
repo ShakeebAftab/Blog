@@ -13,7 +13,7 @@ import { withRouter } from 'react-router';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 300,
+        maxWidth: 270,
         backgroundColor: "#3b3b3b",
         color: 'white',
         borderRadius: '20px'
