@@ -6,7 +6,7 @@ import Featured from '../UI/Featured/Featured'
 import ContentSection from '../UI/ContentSection/ContentSection'
 
 // Test Data
-import { homeFeaturedPosts, techweeklyFeaturedPosts } from '../../TestData/data'
+import { homeFeaturedPosts, techweeklyFeaturedPosts, contentPosts } from '../../TestData/data'
 
 const useStyles = makeStyles(theme => ({
     toolbar: {
@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
     },
     box: {
         minWidth: '100%',
+        paddingBottom: theme.spacing(2)
     }
 }))
 
@@ -58,7 +59,16 @@ const Home = ({ history, match }) => {
                     <Featured posts={posts} history={history} />
                 </Grid>
                 <Grid item>
-                    <ContentSection heading='Tech Junky' />
+                    <ContentSection show={true} history={history} heading='Tech Weekly' posts={contentPosts} />
+                </Grid>
+                <Grid item>
+                    <ContentSection show={true} history={history} heading='Programming Rush' posts={contentPosts} />
+                </Grid>
+                <Grid item>
+                    <ContentSection show={true} history={history} heading='Hardware Flu' posts={contentPosts} />
+                </Grid>
+                <Grid item>
+                    <ContentSection show={true} history={history} heading='Monthly Crackhead' posts={contentPosts} />
                 </Grid>
             </Grid>
         </Box>

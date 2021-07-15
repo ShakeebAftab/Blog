@@ -9,9 +9,11 @@ import Avatar from '@material-ui/core/Avatar';
 import CardHeader from '@material-ui/core/CardHeader';
 import red from '@material-ui/core/colors/red';
 
+import { withRouter } from 'react-router';
+
 const useStyles = makeStyles({
     root: {
-        maxWidth: 400,
+        maxWidth: 300,
         backgroundColor: "#3b3b3b",
         color: 'white',
         borderRadius: '20px'
@@ -28,12 +30,14 @@ const useStyles = makeStyles({
     }
 });
 
-const ContentCard = ({ post }) => {
+const ContentCard = ({ post, history }) => {
   const classes = useStyles();
+
+  const onClickHandler = () => history.push(`/${post.type}/${post.id}`)
 
   return (
     <Card className={classes.root}>
-      <CardActionArea onClick={() => console.log('Clicked')}>
+      <CardActionArea onClick={() => onClickHandler()}>
         <CardMedia
             className={classes.media}
             image={post.pic}
@@ -61,4 +65,4 @@ const ContentCard = ({ post }) => {
   );
 }
 
-export default ContentCard
+export default withRouter(ContentCard)

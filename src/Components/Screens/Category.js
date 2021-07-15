@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import { makeStyles, Grid } from '@material-ui/core'
+import { makeStyles, Grid, Box } from '@material-ui/core'
 
 // Component Imports
 import Featured from '../UI/Featured/Featured'
+import ContentSection from '../UI/ContentSection/ContentSection'
 
 // Test Data
-import { homeFeaturedPosts, techweeklyFeaturedPosts } from '../../TestData/data'
+import { homeFeaturedPosts, techweeklyFeaturedPosts, categoryPosts } from '../../TestData/data'
 
 const useStyles = makeStyles(theme => ({
     toolbar: {
@@ -16,6 +17,10 @@ const useStyles = makeStyles(theme => ({
             minHeight: '64px'
         },
     },
+    box: {
+        minWidth: '100%',
+        paddingBottom: theme.spacing(2)
+    }
 }))
 
 const Category = ({ history, match }) => {
@@ -47,12 +52,17 @@ const Category = ({ history, match }) => {
     if(posts.length <= 0) return <div>ERROR!!</div>
 
     return (
-        <Grid container direction='column'>
-            <Grid item className={classes.toolbar} />
-            <Grid item>
-                <Featured posts={posts} history={history} />
+        <Box overflow="hidden" className={classes.box}>
+            <Grid container direction='column' spacing={4}>
+                <Grid item className={classes.toolbar} />
+                <Grid item>
+                    <Featured posts={posts} history={history} />
+                </Grid>
+                <Grid item>
+                    <ContentSection heading='Articles' posts={categoryPosts} />
+                </Grid>
             </Grid>
-        </Grid>
+        </Box>
     )
 }
 
